@@ -68,9 +68,15 @@ app.post("/", urlEncodedParser, function(request, response) {
   	console.log("Sign Up activated");
     
     var body = request.body;
-    var date = new Date();
-     
-    var postVars = {name: body.usernamesignup, password: body.passwordsignup};
+    con.query("select * from user_details.User_Registration where username = '"+body.usernamesignup+"'", function(error, result, field) {
+    if(error) {
+        console.log(error);
+    } else if(result.length>0) {
+        console.log(result);  //displays '[]'
+      console.log("User Already Exits");
+      response.sendFile( path.join(__dirname + '/index.html?user=yes'));
+    } else {
+    var postVars = {username: body.usernamesignup, email_id:body.emailsignup, password: body.passwordsignup};
     var query = con.query('INSERT INTO user_details.User_Registration SET ?', postVars, function(err, result) {
   		if(err) {
   			response.sendFile( path.join(__dirname + '/error.html'));
@@ -79,6 +85,11 @@ app.post("/", urlEncodedParser, function(request, response) {
 	});
 	console.log(query.sql);
    response.sendFile( path.join(__dirname + '/success.html'));
+    }
+});
+
+        
+    
   } else if (request.body.Login=="Login") {
    var  body = request.body;
    console.log(body.username+": username");
