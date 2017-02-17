@@ -1,0 +1,24 @@
+html
+	head
+		title= 'Class Details '
+		style
+			include ../login.css
+	body
+		h1= 'Class  List'
+	table
+		for classItem in classlist
+			tr
+				td
+			a(href='/student/?classname='+classItem.classname) #{classItem.classname}
+			br
+	form(method='POST' action='/details')
+		div.form-group
+			label(for='class_name') Class Name:
+			input#class_name.form-control(type='text', placeholder='class class_name' name='class_name')
+		div.form-group
+		label(for='description') Description:
+		input#description.form-control(type='text', placeholder='Class Description' name='description')
+		button.btn.btn-primary(type='submit') Add Class
+			
+				
+					

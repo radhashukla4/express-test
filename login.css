@@ -89,7 +89,7 @@ input {
     font-family: 'FontomasCustomRegular';
     src: url('fonts/fontomas-webfont.eot');
     src: url('fonts/fontomas-webfont.eot?#iefix') format('embedded-opentype'),
-         url('fonts/fontomas-webfont.woff') format('woff'),
+         url('fonts/u-webfont.woff') format('woff'),
          url('fonts/fontomas-webfont.ttf') format('truetype'),
          url('fonts/fontomas-webfont.svg#FontomasCustomRegular') format('svg');
     font-weight: normal;
@@ -99,7 +99,7 @@ input {
 /** the magic icon trick ! **/
 [data-icon]:after {
     content: attr(data-icon);
-    font-family: 'FontomasCustomRegular';
+    font-family: 'Arial';
     color: rgb(106, 159, 171);
     position: absolute;
     left: 10px;
@@ -201,11 +201,11 @@ p.change_link{
 }
 #register{	
 	z-index: 21;
-	//opacity: 0;
+	opacity: 0;
 }
 #toregister:target ~ #wrapper #register,
 #tologin:target ~ #wrapper #login{
-	z-index: 22;
+	z-index: 23;
 	animation-name: fadeInLeft;
 	animation-delay: .1s;
 }
@@ -228,6 +228,7 @@ p.change_link{
 #toregister:target ~ #wrapper #login,
 #tologin:target ~ #wrapper #register{
 	animation-name: fadeOutLeftBig;
+	opacity:0;
 }
 
 @keyframes fadeOutLeft {
